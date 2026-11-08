@@ -29,3 +29,23 @@ The goal of this project is to analyze customer feedback on Amazon products by c
 ### 1. Total Reviews
 ```dax
 Total Reviews = COUNT('anaz====='[Review Rating])
+
+### 2. Positive count
+Positive Count = 
+CALCULATE(
+    COUNTA('anaz====='[Sentiment]), 
+    'anaz====='[Sentiment] = "Positive"
+)
+
+Positive Percentage = 
+DIVIDE([Positive Count], [Total Reviews], 0)
+
+### 3. Negative count and percentage 
+Negative Count = 
+CALCULATE(
+    COUNTA('anaz====='[Sentiment]), 
+    'anaz====='[Sentiment] = "Negative"
+)
+
+Negative Percentage = 
+DIVIDE([Negative Count], [Total Reviews], 0)
